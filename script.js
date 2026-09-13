@@ -20,9 +20,9 @@ const subjects = [
 ];
 
 /* ----------------------------------------------------------------
-   Master Sheet-এর CLASS values-এর সাথে হুবহু মিলিয়ে লেখা লজিক্যাল অর্ডার।
-   এই লিস্টে না থাকা কোনো ক্লাস থাকলে সেটা তালিকার শেষে চলে যাবে
-   (তখনও alphabetically সাজানো থাকবে যাতে হারিয়ে না যায়)।
+   Logical order matching Master Sheet CLASS values.
+   Any class not in this list will be added at the end
+   (still sorted alphabetically to avoid losing data).
 ---------------------------------------------------------------- */
 const CLASS_ORDER = [
   'NUR_A', 'NUR_B',
@@ -47,10 +47,10 @@ function classSortIndex(cls) {
 
 /* ----------------------------------------------------------------
    ★★★ CRITICAL FIX ★★★
-   Sheet-এর কোনো ঘরে "N" (Not Applicable) বা খালি/অসংখ্যাসূচক কিছু
-   থাকলে সাধারণ Number() সেটাকে NaN বানিয়ে দেয়, আর একবার NaN যোগ হলে
-   পুরো total/percentage/grade সব NaN হয়ে যায় (নিচের দিকে ছড়িয়ে পড়ে)।
-   safeNum() সবসময় একটা সংখ্যা ফেরত দেবে — অসংখ্যাসূচক কিছু পেলে 0.
+   If any cell in the Sheet contains "N" (Not Applicable) or empty/non-numeric value,
+   Number() converts it to NaN, and once NaN is added,
+   the entire total/percentage/grade becomes NaN (propagates downward).
+   safeNum() always returns a number — returns 0 for non-numeric values.
 ---------------------------------------------------------------- */
 function safeNum(val) {
   const n = Number(val);
@@ -95,7 +95,7 @@ function loadClassDropdown() {
 
   const classes = [...new Set(allStudents.map(s => s.CLASS).filter(Boolean))];
 
-  // Master Sheet অনুযায়ী লজিক্যাল অর্ডার — alphabetical নয়
+  // Logical order per Master Sheet, not alphabetical
   classes.sort((a, b) => {
     const diff = classSortIndex(a) - classSortIndex(b);
     return diff !== 0 ? diff : String(a).localeCompare(String(b));
@@ -112,7 +112,7 @@ function loadClassDropdown() {
 document.getElementById('classSelect').addEventListener('change', function () {
   const cls = this.value;
 
-  // ক্লাস অনুযায়ী নির্দিষ্ট সিগনেচার ফাইলের ম্যাপিং
+  // Class-specific signature file mapping
   const signatureMap = {
     "NUR_A": "nura.png",
     "NUR_B": "nurb.png",
@@ -150,7 +150,7 @@ document.getElementById('classSelect').addEventListener('change', function () {
 
   const students = allStudents.filter(s => String(s.CLASS) === String(cls));
 
-  // Roll Number অনুযায়ী ascending sort (alphabetical নয়)
+  // Sort by Roll Number in ascending order (not alphabetical)
   students.sort((a, b) => safeNum(a.ROLL) - safeNum(b.ROLL));
 
   students.forEach(student => {
