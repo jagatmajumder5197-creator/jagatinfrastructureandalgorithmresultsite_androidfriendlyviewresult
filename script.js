@@ -6,24 +6,19 @@ let allStudents = [];
 const subjects = [
   { name: 'BENGALI', fm: 'FMB', written: 'WTB', oral: 'OLB' },
   { name: 'ENGLISH', fm: 'FME', written: 'WTE', oral: 'OLE' },
-  { name: 'MATHS', fm: 'FMM', written: 'WTM', oral: 'OLM' },
+  { name: 'MATHEMATICS', fm: 'FMM', written: 'WTM', oral: 'OLM' },
   { name: 'HINDI', fm: 'FMHN', written: 'WTHN', oral: 'OLHN' },
   { name: 'COMPUTER', fm: 'FMCM', written: 'WTCM', oral: 'OLCM' },
   { name: 'GK', fm: 'FMGK', written: 'WTGK', oral: 'OLGK' },
   { name: 'EVS', fm: 'FMEV', written: 'WTEV', oral: 'OLEV' },
   { name: 'LSC', fm: 'FMLSC', written: 'WTLSC', oral: 'OLLSC' },
   { name: 'PSC', fm: 'FMPSC', written: 'WTPSC', oral: 'OLPSC' },
-  { name: 'Beng Rhym', fm: 'FMRYMB', written: 'WTRYMB', oral: 'OLRYMB' },
-  { name: 'Eng Rhym', fm: 'FMRYME', written: 'WTRYME', oral: 'OLRYME' },
+  { name: 'BENG RHYM', fm: 'FMRYMB', written: 'WTRYMB', oral: 'OLRYMB' },
+  { name: 'ENG RHYM', fm: 'FMRYME', written: 'WTRYME', oral: 'OLRYME' },
   { name: 'HISTORY', fm: 'FMHS', written: 'WTHS', oral: 'OLHS' },
   { name: 'GEOGRAPHY', fm: 'FMG', written: 'WTG', oral: 'OLG' }
 ];
 
-/* ----------------------------------------------------------------
-   Logical order matching Master Sheet CLASS values.
-   Any class not in this list will be added at the end
-   (still sorted alphabetically to avoid losing data).
----------------------------------------------------------------- */
 const CLASS_ORDER = [
   'NUR_A', 'NUR_B',
   'LKG_A', 'LKG_B',
@@ -45,13 +40,7 @@ function classSortIndex(cls) {
   return idx === -1 ? CLASS_ORDER.length + 1 : idx;
 }
 
-/* ----------------------------------------------------------------
-   ★★★ CRITICAL FIX ★★★
-   If any cell in the Sheet contains "N" (Not Applicable) or empty/non-numeric value,
-   Number() converts it to NaN, and once NaN is added,
-   the entire total/percentage/grade becomes NaN (propagates downward).
-   safeNum() always returns a number — returns 0 for non-numeric values.
----------------------------------------------------------------- */
+
 function safeNum(val) {
   const n = Number(val);
   return isNaN(n) ? 0 : n;
@@ -150,7 +139,7 @@ document.getElementById('classSelect').addEventListener('change', function () {
 
   const students = allStudents.filter(s => String(s.CLASS) === String(cls));
 
-  // Sort by Roll Number in ascending order (not alphabetical)
+ 
   students.sort((a, b) => safeNum(a.ROLL) - safeNum(b.ROLL));
 
   students.forEach(student => {
@@ -196,15 +185,30 @@ function getGrade(percent) {
 function getFmBreakdown(fm, writtenVal, studentClass, subject) {
   if (fm === 100) return { written: 90, oral: 10 };
   if (fm === 25) return { written: '', oral: 25 };
+  
   if (fm === 50) {
-    const wt = String(writtenVal || '').trim().toUpperCase();
-    if (wt === 'N') return { written: '', oral: 50 };
-    if (String(studentClass)=== 'UKG_A' && (subject=== 'HN' || subject=== 'HINDI')) return{
-      written: 40, oral: 10};
+
+    const gkClasses = ['NUR_A', 'NUR_B', 'LKG_A', 'LKG_B'];
+    const isGk = (sub === 'GK' || sub === 'GK');
+
+    if (gkClasses.includes(cls) && isGk) {
+      return { written: '', oral: 50 };
+    }
+
+    const hindiClasses = ['UKG_A', 'UKG_B', 'I (A)', 'I (B)'];
+    const isHindi = (sub === 'HN' || sub === 'HINDI');
+
+    if (hindiClasses.includes(cls) && isHindi) {
+      return { written: 40, oral: 10 };
+    }
+    
     return { written: 45, oral: 5 };
   }
+
   return { written: fm, oral: 0 };
 }
+
+
 
 function calculateRank(cls, studentId) {
   const classStudents = allStudents
