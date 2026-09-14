@@ -368,8 +368,6 @@ body {
   white-space: nowrap;
 }
 
-}
-
 .result-table td.obt-marks,
 .result-table td:nth-child(6),
 .result-table td:nth-child(7),
@@ -377,7 +375,6 @@ body {
   color: #0066ff !important;
   font-weight: 700;
 }
-
 
 
 .result-table th.spacer-col,
