@@ -83,7 +83,10 @@ body {
   margin-bottom: 2px;
 }
 .portal-container h3 {
-  color: #0066ff;
+  font-size:14px;
+  letter-spacing: -0.5px;
+  color: #7e22ce;
+  margin-top: -5px;
 }
 
 
@@ -93,14 +96,16 @@ body {
   height: 44px;
   margin-bottom: 10px;
   border-radius: 5px;
-  border: 1px solid var(--table-border);
+  border: 1.5px solid #cc00ff;
   font-size: 14px;
   font-weight: 600;
   text-align: center;
-  color: var(--text-dark);
+  color: #cc00ff;
   padding: 0 12px;
   cursor: pointer;
+  background-color: #f9f0ff;
 }
+
 
 .portal-container button {
   border: none;
