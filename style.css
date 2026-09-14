@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap');
 
 * {
@@ -206,7 +207,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .marksheet-logo {
@@ -220,7 +221,7 @@ body {
   flex: 1;
   text-align: center;
   padding: 0 8px;
-  min-width: 0;
+  min-width: 180px;
 }
 
 .header-center h1 {
@@ -263,18 +264,17 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
 }
 
-/* ===== TOP INFO ROW (SIDE BY SIDE ALWAYS) ===== */
 .top-info-row {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   margin: 16px 0;
-  align-items: stretch;
-  flex-wrap: nowrap;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .student-section {
   flex: 1;
-  min-width: 0;
+  min-width: 250px;
 }
 
 .student-table,
@@ -287,11 +287,11 @@ body {
 
 .student-table td {
   border: 1px solid var(--table-border);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-black);
   background: #ffffff;
-  padding: 5px 8px;
+  padding: 6px 10px;
 }
 
 .student-table td.label-cell {
@@ -307,12 +307,10 @@ body {
   font-weight: 500;
 }
 
-/* Fixed grading section width for Desktop */
 .grading-section {
-  width: 115px;
-  max-width: 115px;
+  width: 100%;
   flex-shrink: 0;
-  margin-top: 0;
+  margin-top: 12px;
 }
 
 .grading-title {
@@ -331,7 +329,7 @@ body {
 .grading-table th,
 .grading-table td {
   border: 1px solid var(--table-border);
-  padding: 2px 3px;
+  padding: 3px 4px;
   font-size: 8px;
   text-align: center;
   font-weight: 500;
@@ -482,13 +480,13 @@ body {
   margin-top: 20px;
   padding: 0 5px;
   gap: 10px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .sign-col {
   flex: 1;
   text-align: center;
-  min-width: 0;
+  min-width: 80px;
 }
 
 .sign-img {
@@ -532,7 +530,10 @@ body {
   min-width: 120px;
 }
 
-.action-buttons button:active,
+.action-buttons button:active {
+  background: #b0dcc7;
+}
+
 .action-buttons button:hover {
   background: #b0dcc7;
 }
@@ -540,7 +541,7 @@ body {
 /* ===== MOBILE RESPONSIVE @media (max-width: 768px) ===== */
 @media (max-width: 768px) {
   body {
-    padding: 8px;
+    padding: 12px;
   }
 
   .portal-container {
@@ -559,7 +560,7 @@ body {
   }
 
   .portal-container select {
-    font-size: 16px !important; /* Prevents iOS/Android auto zoom */
+    font-size: 16px !important;
   }
 
   .portal-container select,
@@ -570,109 +571,212 @@ body {
   }
 
   .marksheet {
-    padding: 16px 10px;
+    padding: 24px 12px;
     max-width: 100%;
     margin: 0;
     margin-bottom: 16px;
   }
 
   .header-logo-row {
-    gap: 6px;
+    gap: 8px;
   }
 
   .marksheet-logo {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .header-center {
+    padding: 0 4px;
+    min-width: 150px;
   }
 
   .header-center h1 {
-    font-size: 16px;
-    margin-bottom: 2px;
+    font-size: 18px;
+    margin-bottom: 3px;
   }
 
   .header-center h2 {
-    font-size: 10px;
-    margin: 1px 0;
+    font-size: 11px;
+    margin: 2px 0;
+  }
+
+  .header-center h2::before,
+  .header-center h2::after {
+    font-size: 9px;
   }
 
   .header-center h3 {
-    font-size: 10px;
-    padding: 2px 10px;
-    margin-top: 3px;
+    font-size: 11px;
+    padding: 3px 12px;
+    margin-top: 4px;
   }
 
-  /* SIDE-BY-SIDE MOBILE FIX */
+  /* ===== TOP-INFO-ROW: STAY SIDE-BY-SIDE ON MOBILE ===== */
   .top-info-row {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     gap: 6px !important;
-    margin: 10px 0 !important;
-    align-items: stretch !important;
+    margin: 12px 0;
+    align-items: flex-start;
   }
 
+  /* ===== STUDENT SECTION: LEFT SIDE, FLEXIBLE ===== */
   .student-section {
     flex: 1 !important;
     min-width: 0 !important;
   }
 
   .student-table td {
-    font-size: 9px !important;
-    padding: 3px 4px !important;
+    font-size: 10px;
+    padding: 3px 5px;
   }
 
   .student-table td.label-cell {
-    width: 38% !important;
+    width: 38%;
+    padding: 3px 4px;
   }
 
+  .student-table td.value-cell {
+    padding: 3px 4px;
+  }
+
+  /* ===== GRADING SECTION: RIGHT SIDE, COMPACT ===== */
   .grading-section {
-    width: 105px !important;
-    max-width: 105px !important;
+    width: 110px !important;
+    max-width: 110px !important;
     flex-shrink: 0 !important;
     margin-top: 0 !important;
   }
 
   .grading-title {
-    font-size: 6px !important;
-    padding: 1px 2px !important;
+    font-size: 6px;
+    padding: 1px 2px;
   }
 
   .grading-table th,
   .grading-table td {
-    padding: 1px 2px !important;
-    font-size: 6.5px !important;
-    line-height: 1.1 !important;
+    padding: 2px 2px;
+    font-size: 7px;
   }
 
   .assessment-title {
-    font-size: 11px;
-    margin: 10px 0 5px 0;
+    font-size: 12px;
+    margin: 12px 0 6px 0;
+  }
+
+  .assessment-title::before,
+  .assessment-title::after {
+    font-size: 12px;
+  }
+
+  /* ===== TABLE MOBILE FIX ===== */
+  .table-responsive {
+    margin: 8px -12px;
+    padding: 0 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .result-table th,
   .result-table td {
-    padding: 4px 5px;
-    font-size: 9.5px;
+    padding: 5px 6px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .result-table th {
+    padding: 6px 6px;
+    font-size: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .result-table th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 11;
+    background: var(--mint-bg);
   }
 
   .result-table td:first-child {
-    min-width: 85px;
-    padding-left: 4px;
+    min-width: 100px;
+    padding-left: 6px;
     padding-right: 4px;
+    white-space: normal !important;
+    word-break: break-word;
+    position: sticky;
+    left: 0;
+    z-index: 9;
   }
 
-  .final-summary th,
+  .result-table th.spacer-col,
+  .result-table td.spacer-col {
+    width: 6px;
+    min-width: 6px;
+    max-width: 6px;
+  }
+
+  .final-summary {
+    margin: 10px 0;
+  }
+
+  .final-summary table {
+    font-size: 10px;
+  }
+
+  .final-summary th {
+    font-size: 10px;
+    padding: 5px 6px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
   .final-summary td {
-    font-size: 9.5px;
-    padding: 4px 5px;
+    font-size: 10px;
+    padding: 5px 6px;
+  }
+
+  .verified-note {
+    margin: 10px 0;
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+
+  .signature-area {
+    gap: 8px;
+    margin-top: 16px;
+    padding: 0 2px;
+  }
+
+  .sign-col {
+    min-width: 70px;
   }
 
   .sign-img {
-    height: 18px;
+    height: 20px;
+    margin-bottom: 2px;
   }
 
   .sign-label {
-    font-size: 6.5px;
+    font-size: 7px;
+    padding-top: 2px;
+  }
+
+  .action-buttons {
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .action-buttons button {
+    padding: 10px 12px;
+    font-size: 11px;
+    min-height: 48px;
+    min-width: 100px;
+    flex: 1;
   }
 }
 
@@ -681,6 +785,7 @@ body {
   @page {
     size: 210mm 297mm;
     margin: 0;
+    padding: 0;
   }
 
   html, body {
@@ -711,35 +816,98 @@ body {
     height: 297mm !important;
     max-width: 210mm !important;
     margin: 0 !important;
-    padding: 45px 40px 35px 40px !important;
+    padding: 50px 45px 40px 45px !important;
     box-shadow: none !important;
     background-image: url('Images/bg.png') !important;
     background-size: 100% 100% !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 
-  /* Printable Side-by-Side Retention */
+  .student-table td,
+  .result-table td,
+  .final-summary td {
+    page-break-inside: avoid !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+  }
+
+  /* PRINT: Reset mobile styles */
   .top-info-row {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: nowrap !important;
+    flex-wrap: wrap !important;
     gap: 12px !important;
-    margin: 14px 0 !important;
+    margin: 16px 0 !important;
   }
 
   .student-section {
     flex: 1 !important;
-    min-width: 0 !important;
+    min-width: 250px !important;
+  }
+
+  .student-table td {
+    font-size: 13px !important;
+    padding: 6px 10px !important;
   }
 
   .grading-section {
-    width: 120px !important;
-    max-width: 120px !important;
-    flex-shrink: 0 !important;
-    margin-top: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    flex-shrink: unset !important;
+    margin-top: 12px !important;
+  }
+
+  .grading-table th,
+  .grading-table td {
+    padding: 3px 4px !important;
+    font-size: 8px !important;
+  }
+
+  .result-table th,
+  .result-table td {
+    padding: 6px 8px !important;
+    font-size: 11px !important;
+    white-space: normal !important;
+  }
+
+  .result-table th:first-child {
+    position: static !important;
+    left: auto !important;
+    z-index: auto !important;
+  }
+
+  .result-table td:first-child {
+    min-width: auto !important;
+    position: static !important;
+    left: auto !important;
+    z-index: auto !important;
+    white-space: normal !important;
+    word-break: normal !important;
+  }
+
+  .final-summary th {
+    font-size: 11px !important;
+    padding: 7px 8px !important;
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+  }
+
+  .final-summary td {
+    font-size: 11px !important;
+    padding: 6px 8px !important;
+  }
+
+  .action-buttons button {
+    min-height: 44px !important;
+    min-width: 120px !important;
   }
 }
