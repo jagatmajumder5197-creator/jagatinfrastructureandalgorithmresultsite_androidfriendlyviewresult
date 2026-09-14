@@ -144,7 +144,6 @@ function showResult() {
 
   renderResult(student);
 
-  // Hide Search Portal & Show Result with Animation
   document.querySelector('.portal-container').classList.add('hidden');
   const resultWrapper = document.getElementById('resultWrapper');
   resultWrapper.classList.remove('hidden');
@@ -263,10 +262,10 @@ function renderResult(student) {
         <td>${fmStructure.oral}</td>
         <td><b>${fm}</b></td>
         <td class="spacer-col"></td>
-        <td>${obtainedWritten}</td>
-        <td>${obtainedOral}</td>
+        <td><b>${obtainedWritten}</b></td>
+        <td><b>${obtainedOral}</b></td>
         <td><b>${total}</b></td>
-        <td>${percentage.toFixed(2)}%</td>
+        <td><b>${Math.round(percentage)}%</b></td>
         <td><b>${grade}</b></td>
       </tr>
     `;
@@ -279,17 +278,17 @@ function renderResult(student) {
   const calculatedRank = calculateRank(student.CLASS, student.I_D);
 
   const artVal = student.ART || student.Art || 'A<sup>+</sup>';
-  document.getElementById('artGrade').innerHTML = artVal;
+  document.getElementById('artGrade').innerHTML = `<b>${artVal}</b>`;
 
-  document.getElementById('grandFullMarks').innerText = grandFullMarks;
-  document.getElementById('grandTotal').innerText = grandObtained;
-  document.getElementById('grandPercentage').innerText = grandPercentage.toFixed(2) + '%';
+  document.getElementById('grandFullMarks').innerHTML = `<b>${grandFullMarks}</b>`;
+  document.getElementById('grandTotal').innerHTML = `<b>${grandObtained}</b>`;
+  document.getElementById('grandPercentage').innerHTML = `<b>${Math.round(grandPercentage)}%</b>`;
 
   const resultElem = document.getElementById('grandResult');
-  resultElem.innerText = hasFailed ? 'Fail' : 'Pass';
+  resultElem.innerHTML = `<b>${hasFailed ? 'Fail' : 'Pass'}</b>`;
 
-  document.getElementById('grandGrade').innerText = grandGrade;
-  document.getElementById('grandRank').innerHTML = formatOrdinal(calculatedRank);
+  document.getElementById('grandGrade').innerHTML = `<b>${grandGrade}</b>`;
+  document.getElementById('grandRank').innerHTML = `<b>${formatOrdinal(calculatedRank)}</b>`;
 }
 
 function formatOrdinal(value) {
