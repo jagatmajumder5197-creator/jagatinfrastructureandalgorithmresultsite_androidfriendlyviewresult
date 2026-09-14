@@ -69,9 +69,9 @@ body {
 
 .portal-container h1 {
   font-family: 'Algerian', serif;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
-  color: var(--gold-text);
+  color: #0066ff;
   margin-bottom: 3px;
   line-height: 1.2;
 }
@@ -82,6 +82,10 @@ body {
   font-weight: 500;
   margin-bottom: 2px;
 }
+.portal-container h3 {
+  color: #0066ff;
+}
+
 
 .portal-container select,
 .portal-container button {
@@ -100,7 +104,7 @@ body {
 
 .portal-container button {
   border: none;
-  background: var(--royal-blue);
+  background: linear-gradient(135deg, #00b09b, #96c93d);
   color: #ffffff;
 }
 
