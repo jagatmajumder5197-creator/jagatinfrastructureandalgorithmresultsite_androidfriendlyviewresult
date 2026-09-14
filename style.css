@@ -266,8 +266,15 @@ body {
 .student-table td.label-cell {
   width: 32%;
   background: var(--mint-bg);
-  color: #0066ff;
+  color: #0099ff;
   font-weight: 700;
+  font-size: 11px;
+}
+
+.student-table td:nth-child(2) {
+  color: #0066ff !important;
+  font-weight:700;
+  font-size: 12px;
 }
 
 /* COMPACT GRADING TABLE AT TOP-RIGHT CORNER */
