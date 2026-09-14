@@ -363,7 +363,7 @@ body {
   text-align: left;
   padding-left: 4px;
   font-weight: 700;
-  color: #0066ff;
+  color: #ff0099;
   background: #fafafa;
   white-space: nowrap;
 }
@@ -371,7 +371,10 @@ body {
 .result-table td.obt-marks,
 .result-table td:nth-child(6),
 .result-table td:nth-child(7),
-.result-table td:nth-child(8) {
+.result-table td:nth-child(8), 
+.result-table td:nth-child(9),
+.result-table td:nth-child(10)
+{
   color: #0066ff !important;
   font-weight: 700;
 }
