@@ -192,9 +192,9 @@ body {
 
 .header-center h1 {
   font-family: 'Algerian', serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
-  color: #f900f9;
+  color: #990066;
   letter-spacing: 0.3px;
   line-height: 1.15;
   text-transform: uppercase;
@@ -210,7 +210,7 @@ body {
 
 .header-center h3 {
   display: inline-block;
-  background: #1e40af;
+  background: #0066cc;
   color: #ffffff;
   font-size: 11px;
   font-weight: 600;
@@ -245,9 +245,9 @@ body {
 
 .student-table td {
   border: 1px solid var(--table-border);
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 600;
-  color: var(--text-black);
+  color: #0066ff;
   background: #ffffff;
   padding: 4px 6px;
   vertical-align: middle;
@@ -257,14 +257,14 @@ body {
 .student-table td.label-cell {
   width: 32%;
   background: var(--mint-bg);
-  color: var(--text-dark);
+  color: #0066ff;
   font-weight: 700;
 }
 
 /* COMPACT GRADING TABLE AT TOP-RIGHT CORNER */
 .grading-section {
-  width: 95px;
-  max-width: 95px;
+  width: 90px;
+  max-width: 90px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -272,8 +272,8 @@ body {
 
 .grading-title {
   text-align: center;
-  font-size: 7.5px;
-  font-weight: 700;
+  font-size: 6px;
+  font-weight: 600;
   color: var(--text-dark);
   background: var(--mint-bg);
   border: 1px solid var(--table-border);
@@ -337,9 +337,9 @@ body {
 
 .result-table th {
   background: var(--mint-bg);
-  color: var(--text-dark);
+  color: #000000;
   font-weight: 700;
-  font-size: 9.5px;
+  font-size: 11px;
   padding: 4px 1px;
 }
 
@@ -347,7 +347,7 @@ body {
   text-align: left;
   padding-left: 4px;
   font-weight: 700;
-  color: var(--text-dark);
+  color: #0066ff;
   background: #fafafa;
   white-space: nowrap;
 }
@@ -370,17 +370,17 @@ body {
 
 .final-summary th {
   background: var(--mint-bg);
-  color: var(--text-dark);
-  font-weight: 700;
-  font-size: 10.5px;
+  color: #000000;
+  font-weight: 800;
+  font-size: 11px;
   padding: 6px 4px;
   border: 1px solid var(--table-border);
 }
 
 .final-summary td {
   background: #ffffff;
-  color: var(--text-black);
-  font-weight: 500;
+  color: #0066ff;
+  font-weight: 700;
   font-size: 11px;
   padding: 6px 4px;
   border: 1px solid var(--table-border);
